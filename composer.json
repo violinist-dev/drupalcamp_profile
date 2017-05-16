@@ -25,7 +25,7 @@
         "drupal/admin_toolbar": "^1.16",
         "drupal/coffee": "1.x-dev",
         "drupal/reroute_email": "1.x-dev",
-        "sparkpost/sparkpost": "^2.0",
+        "drupal/sparkpost": "^2.0",
         "drupal/email_registration": "1.x-dev"
     }
 }
