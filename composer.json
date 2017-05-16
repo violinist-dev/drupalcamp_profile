@@ -1,0 +1,31 @@
+{
+    "name": "drupalnorge/drupalcamp_profile",
+    "description": "The profile for drupalcamps.",
+    "type": "drupal-profile",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "@composer drupal-scaffold"
+        ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+    },
+    "extra": {
+        "patches": {}
+    },
+    "require": {
+        "drupal/core": "~8.0",
+        "drupal/admin_toolbar": "^1.16",
+        "drupal/coffee": "1.x-dev",
+        "drupal/reroute_email": "1.x-dev",
+        "sparkpost/sparkpost": "^2.0",
+        "drupal/email_registration": "1.x-dev"
+    }
+}
