@@ -1,0 +1,39 @@
+name: Drupalcamp
+description: Drupal camp install profile
+core: 8.x
+type: profile
+
+dependencies:
+  - node
+  - block
+  - ckeditor
+  - config
+  - contextual
+  - menu_link_content
+  - datetime
+  - block_content
+  - editor
+  - help
+  - image
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - dynamic_page_cache
+  - taxonomy
+  - dblog
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - sparkpost
+  - email_registration
+  - coffee
+  - admin_toolbar_tools
+  - reroute_email
+  - camp_utils
+  - session_control
+themes:
+  - seven
+  - drupalcamp_theme

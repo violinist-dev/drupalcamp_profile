@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Install things for drupalcamp profile.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function drupalcamp_profile_install() {
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/news')->save(TRUE);
+}
