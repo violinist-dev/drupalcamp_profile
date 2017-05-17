@@ -1,0 +1,29 @@
+uuid: 93a06b5d-6806-4b1c-80db-c89cf9ee889d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.register
+    - field.field.user.user.field_user_picture
+  module:
+    - user
+id: user.user.register
+targetEntityType: user
+bundle: user
+mode: register
+content:
+  account:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_user_about_me: true
+  field_user_drupal_org_profile: true
+  field_user_picture: true
+  field_user_twitter: true
+  langcode: true
+  language: true

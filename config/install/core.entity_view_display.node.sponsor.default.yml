@@ -1,0 +1,45 @@
+uuid: 22a79e4c-e98c-4de8-8e9a-072a7b9bc089
+langcode: nb
+status: true
+dependencies:
+  config:
+    - field.field.node.sponsor.field_sponsor_level
+    - field.field.node.sponsor.field_sponsor_logo
+    - field.field.node.sponsor.field_sponsor_url
+    - image.style.large
+    - node.type.sponsor
+  module:
+    - image
+    - link
+    - user
+id: node.sponsor.default
+targetEntityType: node
+bundle: sponsor
+mode: default
+content:
+  field_sponsor_logo:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_sponsor_url:
+    type: link
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_sponsor_level: true
+  langcode: true

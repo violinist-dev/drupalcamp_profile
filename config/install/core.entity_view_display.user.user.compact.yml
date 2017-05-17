@@ -1,0 +1,29 @@
+uuid: dc3f84df-e066-4b74-8f1f-38eb82590e3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.field_user_picture
+  module:
+    - image
+    - user
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content:
+  field_user_picture:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  field_user_about_me: true
+  field_user_drupal_org_profile: true
+  field_user_twitter: true
+  langcode: true
+  member_for: true

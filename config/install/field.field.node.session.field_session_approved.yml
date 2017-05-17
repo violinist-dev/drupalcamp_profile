@@ -1,0 +1,23 @@
+uuid: dbdc9dfb-61ac-410b-8f21-3cd74aca5532
+langcode: nb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_session_approved
+    - node.type.session
+id: node.session.field_session_approved
+field_name: field_session_approved
+entity_type: node
+bundle: session
+label: Approved
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Approved
+  off_label: 'Not approved'
+field_type: boolean

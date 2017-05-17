@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Featured speaker'
+type: featured_speaker
+description: 'Used for adding featured speakers'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

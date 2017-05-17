@@ -1,0 +1,31 @@
+uuid: 46b90963-ec8f-4c4a-9d19-0c63b5e347e3
+langcode: nb
+status: true
+dependencies: {  }
+id: administrator
+label: Administrator
+weight: 2
+is_admin: null
+permissions:
+  - 'administer blocks'
+  - 'access coffee'
+  - 'administer content translation'
+  - 'use text format filtered_html'
+  - 'translate interface'
+  - 'access content overview'
+  - 'administer nodes'
+  - 'bypass node access'
+  - 'curate sessions'
+  - 'access administration pages'
+  - 'access site reports'
+  - 'view the administration theme'
+  - 'access toolbar'
+  - 'create content translations'
+  - 'administer languages'
+  - 'administer content types'
+  - 'administer url aliases'
+  - 'create url aliases'
+  - 'administer account settings'
+  - 'administer users'
+  - 'change own username'
+  - 'administer views'

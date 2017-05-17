@@ -1,0 +1,17 @@
+uuid: 20bdbbfb-b2d3-46b1-ac79-18b680f3068a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Session
+type: session
+description: 'Used for sessions for the camp'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

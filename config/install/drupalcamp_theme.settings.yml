@@ -1,0 +1,23 @@
+cdn_provider: ''
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: ''
+  use_default: true
+schemas:
+  bootstrap: 8000
+  drupalcamp_theme: 8000
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true
+logo:
+  path: ''
+  url: ''
+  use_default: true
+navbar_inverse: 1
+navbar_position: static-top
+fluid_container: 0
+table_responsive: '-1'
+table: ''

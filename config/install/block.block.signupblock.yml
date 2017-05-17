@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - camp_utils
+    - system
+  theme:
+    - drupalcamp_theme
+id: signupblock
+theme: drupalcamp_theme
+region: footer
+weight: -5
+provider: null
+plugin: signup_block
+settings:
+  id: signup_block
+  label: 'Signup block'
+  provider: camp_utils
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

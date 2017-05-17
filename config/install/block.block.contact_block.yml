@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - camp_utils
+    - system
+  theme:
+    - drupalcamp_theme
+id: contact_block
+theme: drupalcamp_theme
+region: footer
+weight: -4
+provider: null
+plugin: contact_block
+settings:
+  id: contact_block
+  label: contact_block
+  provider: camp_utils
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

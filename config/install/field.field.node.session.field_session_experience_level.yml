@@ -1,0 +1,28 @@
+uuid: c3a2a7ce-0433-42e6-889c-5dcbfc261b4f
+langcode: nb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_session_experience_level
+    - node.type.session
+    - taxonomy.vocabulary.experience_level
+id: node.session.field_session_experience_level
+field_name: field_session_experience_level
+entity_type: node
+bundle: session
+label: 'Experience level'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      experience_level: experience_level
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

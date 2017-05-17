@@ -1,0 +1,25 @@
+uuid: 743c9f17-29c6-4b4b-9d78-13c3e3e19d35
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.featured_speaker.field_speaker
+    - node.type.featured_speaker
+  module:
+    - user
+id: node.featured_speaker.default
+targetEntityType: node
+bundle: featured_speaker
+mode: default
+content:
+  field_speaker:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: compact
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+hidden:
+  langcode: true
+  links: true

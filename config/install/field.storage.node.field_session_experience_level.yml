@@ -1,0 +1,20 @@
+uuid: 7df65b4c-5876-45f5-a6a0-63134cb76e90
+langcode: nb
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_session_experience_level
+field_name: field_session_experience_level
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

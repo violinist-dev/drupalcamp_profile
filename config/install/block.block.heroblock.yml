@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - camp_utils
+    - system
+  theme:
+    - drupalcamp_theme
+id: heroblock
+theme: drupalcamp_theme
+region: header
+weight: -6
+provider: null
+plugin: hero_block
+settings:
+  id: hero_block
+  label: 'Hero block'
+  provider: camp_utils
+  label_display: '0'
+  hero_title: 'Drupalcamp Oslo'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

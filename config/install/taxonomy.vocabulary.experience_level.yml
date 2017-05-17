@@ -1,0 +1,9 @@
+uuid: b410d9a2-d8b7-4dd7-be0d-c4490fb07d0a
+langcode: nb
+status: true
+dependencies: {  }
+name: 'Experience level'
+vid: experience_level
+description: 'Used to describe the experience level of a session'
+hierarchy: 0
+weight: 0
