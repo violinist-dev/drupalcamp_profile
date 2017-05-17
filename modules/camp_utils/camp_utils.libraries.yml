@@ -1,0 +1,8 @@
+hero_block:
+  js:
+    js/hero_block.js: {}
+  css:
+    component:
+      css/hero_block.css: {}
+  dependencies:
+    - core/jquery

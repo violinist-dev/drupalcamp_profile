@@ -1,0 +1,5 @@
+name: camp_utils
+type: module
+description: Camp Utils
+core: 8.x
+package: Custom

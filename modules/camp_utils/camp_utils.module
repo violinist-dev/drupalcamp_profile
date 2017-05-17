@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains camp_utils.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function camp_utils_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the camp_utils module.
+    case 'help.page.camp_utils':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Camp Utils') . '</p>';
+      return $output;
+
+    default:
+  }
+}

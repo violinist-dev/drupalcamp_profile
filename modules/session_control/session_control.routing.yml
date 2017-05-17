@@ -1,0 +1,10 @@
+session_control.config_form:
+  path: '/admin/config/system/session_control'
+  defaults:
+    _form: '\Drupal\session_control\Form\ConfigForm'
+    _title: 'ConfigForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+

@@ -1,0 +1,82 @@
+<?php
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function session_control_entity_field_access($operation, FieldDefinitionInterface $field_definition, \Drupal\Core\Session\AccountInterface $account, \Drupal\Core\Field\FieldItemListInterface $items = NULL) {
+  $curator_fields = [
+    'field_session_time',
+    'field_session_approved',
+  ];
+  if ($items && in_array($items->getName(), $curator_fields)) {
+    if ($operation != 'edit' && $items->getName() == 'field_session_time') {
+      return AccessResult::neutral();
+    }
+    $account = \Drupal::currentUser();
+    if (!$account->hasPermission('curate sessions')) {
+      return AccessResult::forbidden();
+    }
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function session_control_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+  $config = \Drupal::config('session_control.settings');
+  $enabled = $config->get('sessions_enabled');
+  return AccessResult::allowedIf($enabled);
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function session_control_views_pre_render(ViewExecutable $view) {
+  if ($view->id() == 'sessions') {
+    // Check if we are after the deadline for submitting sessions.
+    // @todo(eirik): Actually do that.
+    $config = \Drupal::config('session_control.settings');
+    $enabled = $config->get('sessions_enabled');
+    if ($enabled) {
+      // Check if we know when the CFP closes.
+      if ($timestamp = $config->get('session_deadline')) {
+        $view->attachment_before[] = [
+          '#type' => 'inline_template',
+          '#template' => '
+          <div class="row session-rules">
+            <div class="col md-12">
+              <div class="alert alert-warning" role="alert">
+                {{ session_text }}
+              </div>
+            </div>
+          </div>
+        ',
+          '#cache' => [
+            'max-age' => 0,
+          ],
+          '#context' => [
+            'session_text' => (string) t('Deadline for submitting your session is @date', [
+              // @todo(eiriksm): Inject dateformatter service and use that.
+              '@date' => format_date($timestamp, 'custom', 'r'),
+            ]),
+          ],
+        ];
+
+      }
+      $view->attachment_after[] = [
+        '#type' => 'inline_template',
+        '#template' => '<div class="row"><div class="col-lg-12">
+          <h3>{% trans %}Submit session?{% endtrans %}</h3>
+          <p><a href="{{ link }}">{% trans %}Click here to submit a session proposal.{% endtrans %}</a></p>
+        </div></div>',
+        '#context' => [
+          'link' => \Drupal\Core\Url::fromUserInput('/user/login?destination=/node/add/session'),
+        ],
+      ];
+    }
+  }
+}

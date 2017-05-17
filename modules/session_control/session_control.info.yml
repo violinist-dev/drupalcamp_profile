@@ -1,0 +1,4 @@
+name: Session control
+type: module
+description: Some settings and tweaks to control session submissions and so on.
+core: 8.x
