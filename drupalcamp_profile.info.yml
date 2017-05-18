@@ -34,6 +34,8 @@ dependencies:
   - reroute_email
   - camp_utils
   - session_control
+  - config_translation
+  - content_translation
 themes:
   - seven
   - drupalcamp_theme
