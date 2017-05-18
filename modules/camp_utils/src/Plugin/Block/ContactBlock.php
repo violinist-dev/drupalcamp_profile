@@ -19,10 +19,16 @@ class ContactBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+    $values = $this->getConfiguration();
+    $style = '';
+    if (!empty($values['bg_image'])) {
+      $style = 'style="background-image: url(' . $values['bg_image'] . ');"';
+    }
 
-    return array(
+    return [
       '#type' => 'inline_template',
       '#template' => '
+      <div ' . $style . '>
         <div class="container">
           <div class="row">
             <div class="col-md-6">
@@ -41,11 +47,15 @@ class ContactBlock extends BlockBase {
             </div>
           </div>
           </div>
-        </div>',
-      '#context' => $config = $this->getConfiguration(),
-    );
+        </div>
+       </div>',
+      '#context' => $values,
+    ];
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function blockForm($form, FormStateInterface $form_state) {
     $form['google_url'] = [
       '#type' => 'textfield',
@@ -78,14 +88,27 @@ class ContactBlock extends BlockBase {
       '#title' => $this->t('Place'),
       '#default_value' => $this->getOption('place'),
     ];
+    $form['bg_image'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Background image'),
+      '#default_value' => $this->getOption('bg_image'),
+    ];
     return $form;
   }
 
+  /**
+   * @param $key
+   *
+   * @return string
+   */
   private function getOption($key) {
     $conf = $this->getConfiguration();
     return !empty($conf[$key]) ? $conf[$key] : '';
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function defaultConfiguration() {
     return [
       'google_url' => '',
@@ -94,9 +117,13 @@ class ContactBlock extends BlockBase {
       'twitter' => '',
       'facebook' => '',
       'place' => '',
+      'bg_image' => '',
     ];
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function blockSubmit($form, FormStateInterface $form_state) {
     $this->setConfiguration($form_state->getValues());
     parent::blockSubmit($form, $form_state);
