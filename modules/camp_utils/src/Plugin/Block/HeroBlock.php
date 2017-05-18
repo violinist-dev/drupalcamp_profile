@@ -92,7 +92,7 @@ class HeroBlock extends BlockBase {
           'camp_utils/hero_block',
         ],
       ],
-      '#template' => '<div id="home" class="bg-image" style="background-image: url({{url}}">
+      '#template' => '<div id="home" class="bg-image" style="background-image: url({{url}})">
         <div class="photo-credit">
           {{ photo_credit }}
         </div>
