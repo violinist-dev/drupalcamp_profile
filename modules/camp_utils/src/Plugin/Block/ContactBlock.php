@@ -34,7 +34,7 @@ class ContactBlock extends BlockBase {
             <div class="col-md-6">
               <h5>{% trans %} Location {% endtrans %}</h5>
               <h3>{{place}}</h3>
-              <a class="fancybox fancybox.iframe btn btn-default" href="{{google_url}}" class="loc fancybox">{% trans %}View Location{% endtrans %}</a>
+              <a class="fancybox fancybox.iframe btn btn-default" href="{{google_url}}" class="loc fancybox">{% trans %}View location{% endtrans %}</a>
             </div>
             <div class="col-md-6">
               <h5>{% trans %} Contact us at {% endtrans %}</h5>

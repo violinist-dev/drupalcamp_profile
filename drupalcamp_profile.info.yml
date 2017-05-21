@@ -36,6 +36,7 @@ dependencies:
   - session_control
   - config_translation
   - content_translation
+  - google_analytics
 themes:
   - seven
   - drupalcamp_theme

@@ -27,6 +27,7 @@
         "drupal/reroute_email": "1.x-dev",
         "drupal/sparkpost": "^2.0",
         "drupal/email_registration": "1.x-dev",
-        "drupalnorge/drupalcamp_theme": "*"
+        "drupalnorge/drupalcamp_theme": "*",
+        "drupal/google_analytics": "^2.1"
     }
 }
