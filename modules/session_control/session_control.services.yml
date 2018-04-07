@@ -1,0 +1,4 @@
+services:
+  session_control.manager:
+    class: Drupal\session_control\SessionControlManager
+    arguments: ['@config.factory']
