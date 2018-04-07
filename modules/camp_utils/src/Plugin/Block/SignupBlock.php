@@ -55,6 +55,10 @@ class SignupBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+    $current_year = date('Y');
+    if ($current_year != _camp_utils_get_year_filter()) {
+      return [];
+    }
     $build = [];
     $build['signup_block_eventbrite_url'] = [
       '#template' => '<div id="signup">

@@ -4,6 +4,9 @@ namespace Drupal\camp_utils\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\session_control\SessionControlManager;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a 'HeroBlock' block.
@@ -13,8 +16,34 @@ use Drupal\Core\Form\FormStateInterface;
  *  admin_label = @Translation("Hero block"),
  * )
  */
-class HeroBlock extends BlockBase {
+class HeroBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
+  /**
+   * This manager service right here.
+   *
+   * @var \Drupal\session_control\SessionControlManager
+   */
+  protected $sessionControlManager;
+
+  /**
+   * HeroBlock constructor.
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, SessionControlManager $session_control) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->sessionControlManager = $session_control;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('session_control.manager')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -85,6 +114,8 @@ class HeroBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+    $year = _camp_utils_get_year_filter();
+    $sessions_enabled = $this->sessionControlManager->areSessionsEnabled($year);
     $build = [
       '#type' => 'inline_template',
       '#attached' => [
@@ -115,7 +146,7 @@ class HeroBlock extends BlockBase {
       </div>',
       '#context' => [
         'url' => $this->configuration['photo_url'],
-        'sessions_enabled' => TRUE,
+        'sessions_enabled' => $sessions_enabled,
         'submit_session' => $this->t('Submit session'),
         'sign_up' => $this->t('Sign up'),
         'title' => $this->configuration['hero_title'],
