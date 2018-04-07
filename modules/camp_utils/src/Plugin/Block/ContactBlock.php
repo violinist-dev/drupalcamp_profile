@@ -97,9 +97,13 @@ class ContactBlock extends BlockBase {
   }
 
   /**
-   * @param $key
+   * Get an option.
+   *
+   * @param string $key
+   *   A config key.
    *
    * @return string
+   *   Value.
    */
   private function getOption($key) {
     $conf = $this->getConfiguration();

@@ -3,7 +3,6 @@
 namespace Drupal\session_control;
 
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * SessionControlManager service.

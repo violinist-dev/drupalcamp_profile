@@ -58,7 +58,7 @@ class ConfigForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
 
-    /** @var DrupalDateTime $timestamp */
+    /** @var \Drupal\Core\Datetime\DrupalDateTime $timestamp */
     $timestamp = $form_state->getValue('session_deadline');
 
     $this->config('session_control.settings')

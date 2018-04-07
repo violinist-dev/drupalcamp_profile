@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * @file
+ * This module.
+ */
+
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\views\ViewExecutable;
@@ -6,7 +16,7 @@ use Drupal\views\ViewExecutable;
 /**
  * Implements hook_entity_field_access().
  */
-function session_control_entity_field_access($operation, FieldDefinitionInterface $field_definition, \Drupal\Core\Session\AccountInterface $account, \Drupal\Core\Field\FieldItemListInterface $items = NULL) {
+function session_control_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
   $curator_fields = [
     'field_session_time',
     'field_session_approved',
@@ -26,7 +36,7 @@ function session_control_entity_field_access($operation, FieldDefinitionInterfac
 /**
  * Implements hook_node_access().
  */
-function session_control_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+function session_control_node_access(NodeInterface $node, $op, AccountInterface $account) {
   $config = \Drupal::config('session_control.settings');
   $enabled = $config->get('sessions_enabled');
   return AccessResult::allowedIf($enabled);
@@ -74,7 +84,7 @@ function session_control_views_pre_render(ViewExecutable $view) {
           <p><a href="{{ link }}">{% trans %}Click here to submit a session proposal.{% endtrans %}</a></p>
         </div></div>',
         '#context' => [
-          'link' => \Drupal\Core\Url::fromUserInput('/user/login?destination=/node/add/session'),
+          'link' => Url::fromUserInput('/user/login?destination=/node/add/session'),
         ],
       ];
     }

@@ -16,16 +16,15 @@ use Drupal\Core\Url;
  */
 class SignupBlock extends BlockBase {
 
-  
   /**
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
     return [
-       'eventbrite_url' => '',
-      ] + parent::defaultConfiguration();
-  
- }
+      'eventbrite_url' => '',
+    ] + parent::defaultConfiguration();
+
+  }
 
   /**
    * {@inheritdoc}

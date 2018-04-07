@@ -4,4 +4,3 @@ session_control.config_form:
   description: 'Edit settings for session control.'
   parent: system.admin_config_system
   weight: 99
-

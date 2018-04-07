@@ -56,7 +56,7 @@ class HeroBlock extends BlockBase implements ContainerFactoryPluginInterface {
       'photo_url' => drupal_get_path('module', 'camp_utils') . '/images/background.jpg',
     ] + parent::defaultConfiguration();
 
- }
+  }
 
   /**
    * {@inheritdoc}
