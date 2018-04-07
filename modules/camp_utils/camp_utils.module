@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_help().
@@ -21,4 +23,53 @@ function camp_utils_help($route_name, RouteMatchInterface $route_match) {
 
     default:
   }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function camp_utils_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  $interesting_views = [
+    'featured_speakers',
+    'news_articles',
+    'sponsor_blocks',
+    'sessions',
+  ];
+  $year = _camp_utils_get_year_filter();
+  $year_start = strtotime(sprintf('01.01.%d', $year));
+  $year_end = strtotime(sprintf('31.12.%d', $year));
+  $name = $view->id();
+  if (in_array($name, $interesting_views)) {
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {
+        if (strpos($condition['field'], 'node_field_data.created BETWEEN') !== 0) {
+          continue;
+        }
+        $condition['field'] = sprintf('node_field_data.created BETWEEN %d AND %d', $year_start, $year_end);
+      }
+    }
+  }
+}
+
+/**
+ * Gets a year filter based on the domain name or current year.
+ */
+function _camp_utils_get_year_filter() {
+  $year = date('Y');
+  global $base_url;
+  preg_match('/(\d){4}/', $base_url, $matches);
+  if (!empty($matches[0])) {
+    // Possibly this then?
+    $year = $matches[0];
+  }
+  return $year;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Add the year class to body.
+ */
+function camp_utils_preprocess_html(&$variables) {
+  $variables['attributes']['class'][] = 'drupalcamp-' . _camp_utils_get_year_filter();
 }
