@@ -21,7 +21,7 @@
         "patches": {}
     },
     "require": {
-        "drupal/core": "8.5.1",
+        "drupal/core": "8.5.2",
         "drupal/redirect": "1.1.0",
         "drupal/admin_toolbar": "1.23.0",
         "drupal/coffee": "1.0-beta2",
