@@ -37,9 +37,12 @@ function session_control_entity_field_access($operation, FieldDefinitionInterfac
  * Implements hook_node_access().
  */
 function session_control_node_access(NodeInterface $node, $op, AccountInterface $account) {
+  if ($node->bundle() != 'session') {
+    return AccessResult::neutral();
+  }
   $config = \Drupal::config('session_control.settings');
   $enabled = $config->get('sessions_enabled');
-  return AccessResult::allowedIf($enabled);
+  return AccessResult::allowedIf($enabled && $account->hasPermission('create session content'));
 }
 
 /**
