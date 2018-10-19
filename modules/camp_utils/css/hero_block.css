@@ -44,3 +44,6 @@
   position: absolute;
   color: #fff;
 }
+body.drupalcamp-2018 footer section.views-element-container {
+  display: block;
+}
