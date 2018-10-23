@@ -57,6 +57,14 @@ function session_control_views_pre_render(ViewExecutable $view) {
     if ($enabled) {
       // Check if we know when the CFP closes.
       if ($timestamp = $config->get('session_deadline')) {
+        $session_text = (string) t('Deadline for submitting your session is @date', [
+          // @todo(eiriksm): Inject dateformatter service and use that.
+          '@date' => format_date($timestamp, 'custom', 'r'),
+        ]);
+        if ($view->current_display == 'page_2') {
+          // Meaning the actual program, and not the proposed sessions.
+          $session_text = (string) t('Changes in the program might still happen');
+        }
         $view->attachment_before[] = [
           '#type' => 'inline_template',
           '#template' => '
@@ -72,10 +80,7 @@ function session_control_views_pre_render(ViewExecutable $view) {
             'max-age' => 0,
           ],
           '#context' => [
-            'session_text' => (string) t('Deadline for submitting your session is @date', [
-              // @todo(eiriksm): Inject dateformatter service and use that.
-              '@date' => format_date($timestamp, 'custom', 'r'),
-            ]),
+            'session_text' => $session_text,
           ],
         ];
 
