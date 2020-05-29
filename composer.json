@@ -27,7 +27,7 @@
         "drupal/coffee": "1.0-beta2",
         "drupal/reroute_email": "1.0.0",
         "drupal/sparkpost": "2.0.0",
-        "drupal/email_registration": "1.0.0-rc6",
+        "drupal/email_registration": "1.0.0",
         "drupalnorge/drupalcamp_theme": "*",
         "drupal/google_analytics": "2.3.0"
     }
