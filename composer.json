@@ -29,6 +29,6 @@
         "drupal/sparkpost": "2.0.0",
         "drupal/email_registration": "1.0.0-rc6",
         "drupalnorge/drupalcamp_theme": "*",
-        "drupal/google_analytics": "2.3.0"
+        "drupal/google_analytics": "2.5.0"
     }
 }
